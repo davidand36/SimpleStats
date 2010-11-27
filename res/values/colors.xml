@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="main_bg">#DFDFFF</color>
+  <color name="main_text">#000000</color>
+  <color name="edit_bg">#FFFFFF</color>
+  <color name="edit_text">#000000</color>
+  <color name="results_bg">#DFDFFF</color>
+  <color name="results_text">#000000</color>
+</resources>

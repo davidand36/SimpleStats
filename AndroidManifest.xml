@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="us.EpsilonDelta.SimpleStats"
+          android:versionCode="1"
+          android:versionName="1.0">
+
+  <application android:icon="@drawable/sigma_icon"
+               android:label="@string/app_name"
+               android:debuggable="true">
+
+    <activity android:name=".SimpleStatsActivity"
+              android:label="@string/app_name">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".MeanActivity"
+              android:label="@string/meanTitle">
+    </activity>
+
+    <activity android:name=".MeansActivity"
+              android:label="@string/meansTitle">
+    </activity>
+
+    <activity android:name=".CorrelationActivity"
+              android:label="@string/meansTitle">
+    </activity>
+
+    <activity android:name=".ContingencyActivity"
+              android:label="@string/meansTitle">
+    </activity>
+
+  </application>
+
+  <uses-sdk android:minSdkVersion="3" />
+
+</manifest> 

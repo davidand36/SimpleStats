@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/mean_layout"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical">
+  <TextView android:text="@string/mean_sampleDataPrompt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/normalText"
+            android:layout_weight="0"
+            android:clickable="false"
+            android:focusable="false"
+            android:id="@+id/mean_samplePrompt"
+            />
+  <EditText android:id="@+id/mean_sampleData"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/normalText"
+            android:typeface="monospace"
+            android:layout_weight="1"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="@string/sampleHint"
+            android:gravity="top"
+            />
+  <LinearLayout android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="horizontal">
+    <TextView android:text="@string/mean_nullHypothPrompt"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/normalText"
+              android:clickable="false"
+              android:focusable="false"
+              />
+    <EditText android:id="@+id/mean_hypothMean"
+              android:text="0"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/normalText"
+              android:typeface="monospace"
+              android:focusable="true"
+              android:focusableInTouchMode="true"
+              android:inputType="number|numberSigned|numberDecimal"
+              />
+  </LinearLayout>
+  <Button android:id="@+id/analyze"
+          android:text="@string/Analyze"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="@dimen/normalText"
+          android:layout_weight="0"
+          android:layout_gravity="center_horizontal"
+          android:clickable="true"
+          />
+</LinearLayout>
