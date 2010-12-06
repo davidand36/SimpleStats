@@ -29,6 +29,8 @@
   <string name="FishersExactTest">Fisher\'s Exact Test</string>
   <string name="YatesCorrection">Yates\'s correction</string>
 
+  <string name="analysisTitle">Data Analysis</string>
+
   <string name="meanTitle">Mean</string>
   <string name="mean_sampleDataPrompt">Sample data:</string>
   <string name="mean_nullHypothPrompt">Null hypothesis: µ = </string>

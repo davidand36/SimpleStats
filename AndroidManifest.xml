@@ -16,6 +16,10 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".AnalysisActivity"
+              android:label="@string/analysisTitle">
+    </activity>
+
     <activity android:name=".MeanActivity"
               android:label="@string/meanTitle">
     </activity>

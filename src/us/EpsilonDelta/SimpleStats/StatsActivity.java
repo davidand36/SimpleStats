@@ -10,13 +10,9 @@ package us.EpsilonDelta.SimpleStats;
 import java.util.List;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.app.Dialog;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
 import android.widget.Button;
 import android.util.DisplayMetrics;
 import android.text.style.CharacterStyle;
@@ -47,24 +43,7 @@ class StatsActivity
     onCreate( Bundle savedInstanceState )
     {
         super.onCreate( savedInstanceState );
-        if ( (savedInstanceState != null)
-             && (savedInstanceState.getBoolean( "ShowingAnalysis", false )) )
-            m_showAnalysis = true;
-        LayoutInflater layoutInflater = getLayoutInflater();
-        int layoutId = getLayoutId();
-        m_layout = layoutInflater.inflate( layoutId, null );
-        setContentView( m_layout );
-    }
-
-//-----------------------------------------------------------------------------
-
-    @Override
-    public
-    void
-    onSaveInstanceState( Bundle outState )
-    {
-        super.onSaveInstanceState( outState );
-        outState.putBoolean( "ShowingAnalysis", m_showingAnalysis );
+        setContentView( getLayoutId() );
     }
 
 //-----------------------------------------------------------------------------
@@ -76,11 +55,6 @@ class StatsActivity
     {
         super.onResume( );
         ((Button)findViewById( R.id.analyze )).setOnClickListener( this );
-        if ( m_showAnalysis )
-        {
-            m_showAnalysis = false;
-            showDialog( ANALYSIS_DIALOG_ID );
-        }
     }
 
 //=============================================================================
@@ -89,74 +63,12 @@ class StatsActivity
     void
     onClick( View v )
     {
-        showDialog( ANALYSIS_DIALOG_ID );
-    }
-
-//=============================================================================
-
-    @Override
-    protected
-    Dialog
-    onCreateDialog( int dialogId )
-    {
-        switch ( dialogId )
-        {
-        case ANALYSIS_DIALOG_ID:
-        {
-            AlertDialog.Builder builder = new AlertDialog.Builder( this );
-
-            LayoutInflater layoutInflater = getLayoutInflater();
-            View layout
-                    = layoutInflater.inflate( R.layout.analysis_dialog, null );
-            builder.setView( layout );
-            DialogInterface.OnClickListener clickListener
-                    = new DialogInterface.OnClickListener()
-                        {
-                            public void
-                            onClick( DialogInterface dialog, int buttonId )
-                            {
-                                dialog.dismiss( );
-                            }
-                        };
-            DialogInterface.OnDismissListener dismissListener
-                    = new DialogInterface.OnDismissListener()
-                        {
-                            public void
-                            onDismiss( DialogInterface dialog )
-                            {
-                                m_showingAnalysis = false;
-                            }
-                        };
-
-            builder.setPositiveButton( R.string.OK, clickListener );
-            Dialog dialog = builder.create( );
-            dialog.setOnDismissListener( dismissListener );
-            return dialog;
-        }
-        default:
-            return null;
-        }
-    }
-
-//-----------------------------------------------------------------------------
-
-    @Override
-    protected
-    void
-    onPrepareDialog( int dialogId, Dialog dialog )
-    {
-        super.onPrepareDialog( dialogId, dialog );
-        switch ( dialogId )
-        {
-        case ANALYSIS_DIALOG_ID:
-        {
-            m_showingAnalysis = true;
-            CharSequence analysisText = getAnalysisText( );
-            ((TextView)dialog.findViewById( R.id.analysis_text ))
-                    .setText( analysisText );
-            break;
-        }
-        }
+        CharSequence analysisText = getAnalysisText( );
+        Intent intent = new Intent( getApplicationContext(),
+                                    AnalysisActivity.class );
+        intent.putExtra( "us.EpsilonDelta.SimpleStats.ANALYSIS_TEXT",
+                         analysisText );
+        startActivity( intent );
     }
 
 //=============================================================================
@@ -210,10 +122,6 @@ class StatsActivity
     
 //=============================================================================
 
-    private static final int ANALYSIS_DIALOG_ID = 1;
-    private View m_layout;
-    private boolean m_showAnalysis = false;
-    private boolean m_showingAnalysis = false;
     // private static final String LOGTAG = "StatsActivity";
 
 //-----------------------------------------------------------------------------
