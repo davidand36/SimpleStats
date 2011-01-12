@@ -35,28 +35,28 @@ public class SimpleStatsActivity
         final TabHost tabHost = getTabHost();
         
         String tabTitle = getResources().getString( R.string.meanTitle );
-        Drawable tabIcon = getResources().getDrawable( R.drawable.mu_tab_icon );
+        Drawable tabIcon = getResources().getDrawable( R.drawable.tab_mu );
         Intent intent = new Intent( appContext, MeanActivity.class );
         tabHost.addTab( tabHost.newTabSpec( "meanTab" )
                         .setIndicator( tabTitle, tabIcon )
                         .setContent( intent ) );
 
         tabTitle = getResources().getString( R.string.meansTitle );
-        tabIcon = getResources().getDrawable( R.drawable.mu2_tab_icon );
+        tabIcon = getResources().getDrawable( R.drawable.tab_mu2 );
         intent = new Intent( appContext, MeansActivity.class );
         tabHost.addTab( tabHost.newTabSpec( "meansTab" )
                         .setIndicator( tabTitle, tabIcon )
                         .setContent( intent ) );
 
         tabTitle = getResources().getString( R.string.correlationTitle );
-        tabIcon = getResources().getDrawable( R.drawable.rho_tab_icon );
+        tabIcon = getResources().getDrawable( R.drawable.tab_rho );
         intent = new Intent( appContext, CorrelationActivity.class );
         tabHost.addTab( tabHost.newTabSpec( "correlationTab" )
                         .setIndicator( tabTitle, tabIcon )
                         .setContent( intent ) );
 
         tabTitle = getResources().getString( R.string.contingencyTitle );
-        tabIcon = getResources().getDrawable( R.drawable.chi2_tab_icon );
+        tabIcon = getResources().getDrawable( R.drawable.tab_chi2 );
         intent = new Intent( appContext, ContingencyActivity.class );
         tabHost.addTab( tabHost.newTabSpec( "contingencyTab" )
                         .setIndicator( tabTitle, tabIcon )

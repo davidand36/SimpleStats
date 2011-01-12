@@ -12,9 +12,11 @@ import java.io.StringWriter;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.ArrayList;
+import android.widget.TextView;
 import android.widget.EditText;
 import android.graphics.Typeface;
-import android.text.SpannableString;
+import android.text.TextWatcher;
+import android.text.Editable;
 import android.text.style.StyleSpan;
 // import android.util.Log;
 
@@ -39,6 +41,18 @@ class MeanActivity
 //=============================================================================
 
     @Override
+    public
+    void
+    onResume( )
+    {
+        super.onResume( );
+        ((EditText)findViewById( R.id.mean_H1Mean )).addTextChangedListener(
+            new HypothMeanTextWatcher() );
+    }
+
+//=============================================================================
+
+    @Override
     protected
     CharSequence
     getAnalysisText( )
@@ -48,7 +62,7 @@ class MeanActivity
         Sample sample = new Sample( sampleText );
         int precision = sample.precision();
         String hypothMeanText
-                = ((EditText)findViewById( R.id.mean_hypothMean ))
+                = ((EditText)findViewById( R.id.mean_H1Mean ))
                 .getText().toString();
         double hypothMean = 0.;
         try
@@ -84,7 +98,6 @@ class MeanActivity
         String Mean_ = getResources().getString( R.string.Mean );
         String StdDev_ = getResources().getString( R.string.StdDev );
         String TestOfH0_ = getResources().getString( R.string.TestOfH0 );
-        String oneTailed_ = getResources().getString( R.string.oneTailed );
         String dof_ = getResources().getString( R.string.dof );
         String Probability_ = getResources().getString( R.string.Probability );
 
@@ -115,12 +128,13 @@ class MeanActivity
 
                 Stats.TTestResult result
                         = Stats.meanTest( sample.size(), sample.mean(),
-                                          sample.variance(), hypothMean, 1 );
+                                          sample.variance(), hypothMean,
+                                          m_tail );
                 reportPW.printf( "\n\n"
-                                 + TestOfH0_ + " (µ=" + statFmt0 + "):\n"
+                                 + TestOfH0_ + " (µ" + m_tail.h0RelationSymbol
+                                 + statFmt0 + "):\n"
                                  + "  t=%.3f (" + dof_ + "=%d)" + lend1
-                                 + " " + Probability_
-                                 + " (" + oneTailed_ + ") = ",
+                                 + " " + Probability_ + " = ",
                                  hypothMean,
                                  result.t,
                                  result.degreesOfFreedom );
@@ -134,18 +148,48 @@ class MeanActivity
             }
         }
 
-        String reportString = reportSW.toString();
-        fixupH0s( reportString, textSpans );
-        
-        SpannableString analysisText
-                = new SpannableString( reportString );
-        for ( TextSpan ts : textSpans )
-        {
-            analysisText.setSpan( ts.style, ts.start, ts.end, 0 );
-        }
-
-        return analysisText;
+        return makeSpannableString( reportSW.toString(), textSpans );
     }
+
+    
+//=============================================================================
+
+    
+    private
+    class HypothMeanTextWatcher
+        implements TextWatcher
+    {                                                   //HypothMeanTextWatcher
+    //-------------------------------------------------------------------------
+
+        public
+        void
+        afterTextChanged( Editable s )
+        {
+            ((TextView)findViewById( R.id.mean_H0Mean )).setText(
+                s.toString() );
+        }
+        
+    //-------------------------------------------------------------------------
+
+        public
+        void
+        beforeTextChanged( CharSequence txt, int start, int count, int after )
+        {
+            //Do nothing
+        }
+        
+    //-------------------------------------------------------------------------
+
+        public
+        void
+        onTextChanged( CharSequence txt, int start, int before, int count )
+        {
+            //Do nothing
+        }
+        
+    //-------------------------------------------------------------------------
+    }                                                   //HypothMeanTextWatcher
+
     
 //=============================================================================
 

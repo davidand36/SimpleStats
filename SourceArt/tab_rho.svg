@@ -13,9 +13,9 @@
    height="64px"
    id="svg2892"
    version="1.1"
-   inkscape:version="0.47 r22583"
-   sodipodi:docname="Chi2TabIcon.svg"
-   inkscape:export-filename="/home/dma/Projects/Android/SimpleStats/res/drawable/chi2_tab_icon.png"
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="tab_rho.svg"
+   inkscape:export-filename="/home/dma/Projects/SimpleStats/SourceArt/Mu2TabIcon.png"
    inkscape:export-xdpi="67.5"
    inkscape:export-ydpi="67.5">
   <defs
@@ -58,8 +58,8 @@
      inkscape:grid-bbox="true"
      inkscape:window-width="845"
      inkscape:window-height="757"
-     inkscape:window-x="396"
-     inkscape:window-y="184"
+     inkscape:window-x="470"
+     inkscape:window-y="105"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata2897">
@@ -69,7 +69,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -84,19 +84,19 @@
      inkscape:label="Text">
     <text
        xml:space="preserve"
-       style="font-size:50.00012493px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr;text-anchor:start;fill:#ffff00;fill-opacity:1;stroke:#0000ff;stroke-width:1.00000249999999991;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:FreeSerif;-inkscape-font-specification:FreeSerif Bold Italic"
-       x="12.07786"
-       y="39.730808"
+       style="font-size:69.305336px;font-style:oblique;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ffff00;fill-opacity:1;stroke:#0000ff;stroke-width:1.15508902;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:FreeSans;-inkscape-font-specification:FreeSans Bold Oblique"
+       x="18.428425"
+       y="39.101143"
        id="text4136"
        sodipodi:linespacing="100%"
-       transform="scale(1.0097139,0.99037959)"
-       inkscape:export-filename="/home/dma/Projects/Android/SimpleStats/res/drawable/chi2_tab_icon.png"
+       inkscape:export-filename="/home/dma/Projects/Android/SimpleStats/res/drawable/rho_tab_icon.png"
        inkscape:export-xdpi="67.5"
-       inkscape:export-ydpi="67.5"><tspan
+       inkscape:export-ydpi="67.5"
+       transform="scale(0.86238924,1.1595692)"><tspan
          sodipodi:role="line"
-         id="tspan2962"
-         x="12.07786"
-         y="39.730808"
-         style="stroke-width:1.00000249999999991;-inkscape-font-specification:FreeSerif Bold Italic;font-family:FreeSerif;font-weight:bold;font-style:italic;font-stretch:normal;font-variant:normal;font-size:50.00012493px;text-anchor:start;text-align:start;writing-mode:lr;line-height:100%">χ²</tspan></text>
+         id="tspan2939"
+         x="18.428425"
+         y="39.101143"
+         style="stroke-width:1.15508902">ρ</tspan></text>
   </g>
 </svg>

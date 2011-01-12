@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.ArrayList;
 import android.widget.EditText;
 import android.graphics.Typeface;
-import android.text.SpannableString;
 import android.text.style.StyleSpan;
 // import android.util.Log;
 
@@ -141,6 +140,7 @@ class ContingencyActivity
             if ( contingencyRslt.sampleTotal < MAX_FISHER_SAMPLE_TOTAL )
             {
                 double fisherProb = Stats.fishersExactTest( table, 1 );
+
                 reportPW.printf( "\n\n"
                                  + FishersExactTest_ + ":\n"
                                  + "  " + Probability_
@@ -202,17 +202,7 @@ class ContingencyActivity
                                          new StyleSpan( Typeface.BOLD ) ) );
         }
         
-        String reportString = reportSW.toString();
-        fixupH0s( reportString, textSpans );
-        
-        SpannableString analysisText
-                = new SpannableString( reportString );
-        for ( TextSpan ts : textSpans )
-        {
-            analysisText.setSpan( ts.style, ts.start, ts.end, 0 );
-        }
-
-        return analysisText;
+        return makeSpannableString( reportSW.toString(), textSpans );
     }
     
 //=============================================================================

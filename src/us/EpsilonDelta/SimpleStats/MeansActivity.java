@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.ArrayList;
 import android.widget.EditText;
 import android.graphics.Typeface;
-import android.text.SpannableString;
 import android.text.style.StyleSpan;
 // import android.util.Log;
 
@@ -80,8 +79,6 @@ class MeansActivity
         String Mean_ = getResources().getString( R.string.Mean );
         String StdDev_ = getResources().getString( R.string.StdDev );
         String TestOfH0_ = getResources().getString( R.string.TestOfH0 );
-        String oneTailed_ = getResources().getString( R.string.oneTailed );
-        String twoTailed_ = getResources().getString( R.string.twoTailed );
         String assuming_ = getResources().getString( R.string.assuming );
         String dof_ = getResources().getString( R.string.dof );
         String dofs_ = getResources().getString( R.string.dofs );
@@ -137,26 +134,27 @@ class MeansActivity
                                        samples[ 0 ].variance(),
                                        samples[ 1 ].size(), samples[ 1 ].mean(),
                                        samples[ 1 ].variance(),
-                                       true, 1 );
+                                       true, m_tail );
             Stats.TTestResult meansNoneqVResult
                     = Stats.meansTest( samples[ 0 ].size(), samples[ 0 ].mean(),
                                        samples[ 0 ].variance(),
                                        samples[ 1 ].size(), samples[ 1 ].mean(),
                                        samples[ 1 ].variance(),
-                                       false, 1 );
+                                       false, m_tail );
             Stats.FTestResult varsResult
                     = Stats.variancesTest( samples[ 0 ].size(),
                                            samples[ 0 ].variance(),
                                            samples[ 1 ].size(),
-                                           samples[ 1 ].variance(), 2 );
+                                           samples[ 1 ].variance(),
+                                           Stats.Tail.BOTH );
             boolean variancesEqual
                     = (varsResult.probability > EQUAL_VAR_CUTOFF);
             reportPW.printf( "\n\n"
-                             + TestOfH0_ + " (µ₁=µ₂)," + lend0
+                             + TestOfH0_
+                             + " (µ₁" + m_tail.h0RelationSymbol + "µ₂)," + lend0
                              + " " + assuming_ + " σ²₁=σ²₂:\n"
                              + "  t=%.3f (" + dof_ + "=%d)" + lend1
-                             + " " + Probability_
-                             + " (" + oneTailed_ + ") = ",
+                             + " " + Probability_ + " = ",
                              meansEqVResult.t,
                              meansEqVResult.degreesOfFreedom );
             int start = reportSW.toString().length();
@@ -167,10 +165,10 @@ class MeansActivity
                                              new StyleSpan( Typeface.BOLD ) ) );
                 
             reportPW.printf( "\n"
-                             + TestOfH0_ + " (µ₁=µ₂):\n"
+                             + TestOfH0_
+                             + " (µ₁" + m_tail.h0RelationSymbol + "µ₂):\n"
                              + "  t=%.3f (" + dof_ + "=%d)" + lend1
-                             + " " + Probability_
-                             + " (" + oneTailed_ + ") = ",
+                             + " " + Probability_ + " = ",
                              meansNoneqVResult.t,
                              meansNoneqVResult.degreesOfFreedom );
             start = reportSW.toString().length();
@@ -183,8 +181,7 @@ class MeansActivity
             reportPW.printf( "\n"
                              + TestOfH0_ + " (σ²₁=σ²₂):\n"
                              + "  F=%.3f (" + dofs_ + "=%d, %d)" + lend1
-                             + " " + Probability_
-                             + " (" + twoTailed_ + ") = "
+                             + " " + Probability_ + " = "
                              + "%.3f",
                              varsResult.f,
                              varsResult.degreesOfFreedom1,
@@ -192,17 +189,7 @@ class MeansActivity
                              varsResult.probability );
         }
 
-        String reportString = reportSW.toString();
-        fixupH0s( reportString, textSpans );
-        
-        SpannableString analysisText
-                = new SpannableString( reportString );
-        for ( TextSpan ts : textSpans )
-        {
-            analysisText.setSpan( ts.style, ts.start, ts.end, 0 );
-        }
-
-        return analysisText;
+        return makeSpannableString( reportSW.toString(), textSpans );
     }
         
 //=============================================================================

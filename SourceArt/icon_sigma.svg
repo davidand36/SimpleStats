@@ -9,15 +9,15 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="64px"
-   height="64px"
+   width="27"
+   height="27"
    id="svg2892"
    version="1.1"
-   inkscape:version="0.47 r22583"
-   sodipodi:docname="Mu2TabIcon.svg"
-   inkscape:export-filename="/home/dma/Projects/Android/SimpleStats/res/drawable/mu2_tab_icon.png"
-   inkscape:export-xdpi="67.5"
-   inkscape:export-ydpi="67.5">
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="SigmaIcon.svg"
+   inkscape:export-filename="/home/dma/Projects/SimpleStats/SourceArt/SigmaIcon.png"
+   inkscape:export-xdpi="101.25"
+   inkscape:export-ydpi="101.25">
   <defs
      id="defs2894">
     <inkscape:perspective
@@ -51,16 +51,17 @@
      inkscape:pageshadow="2"
      inkscape:zoom="7.7781746"
      inkscape:cx="30.537129"
-     inkscape:cy="32.214811"
-     inkscape:current-layer="layer2"
+     inkscape:cy="33.074054"
+     inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:document-units="px"
      inkscape:grid-bbox="true"
-     inkscape:window-width="845"
+     inkscape:window-width="1100"
      inkscape:window-height="757"
-     inkscape:window-x="557"
-     inkscape:window-y="41"
-     inkscape:window-maximized="0" />
+     inkscape:window-x="533"
+     inkscape:window-y="1"
+     inkscape:window-maximized="0"
+     units="in" />
   <metadata
      id="metadata2897">
     <rdf:RDF>
@@ -69,7 +70,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -77,24 +78,31 @@
      id="layer1"
      inkscape:label="Background"
      inkscape:groupmode="layer"
-     sodipodi:insensitive="true" />
+     transform="translate(0,-37)">
+    <rect
+       style="fill:#76b3df;fill-opacity:1"
+       id="rect3619"
+       width="64"
+       height="64"
+       x="0"
+       y="0"
+       ry="16" />
+  </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="Text">
+     inkscape:label="Text"
+     transform="translate(0,-37)">
     <text
        xml:space="preserve"
-       style="font-size:60px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr;text-anchor:start;fill:#ffff00;fill-opacity:1;stroke:#0000ff;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:FreeSerif;-inkscape-font-specification:FreeSerif Bold Italic"
-       x="9.3000002"
-       y="30.959999"
+       style="font-size:72px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ffff00;fill-opacity:1;stroke:none;font-family:FreeSerif;-inkscape-font-specification:FreeSerif"
+       x="11.073924"
+       y="55.775883"
        id="text4136"
-       sodipodi:linespacing="100%"
-       inkscape:export-filename="/home/dma/Projects/Android/SimpleStats/res/drawable/mu2_tab_icon.png"
-       inkscape:export-xdpi="67.5"
-       inkscape:export-ydpi="67.5"><tspan
+       sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         id="tspan2916"
-         x="9.3000002"
-         y="30.959999">µ₂</tspan></text>
+         id="tspan2828"
+         x="11.073924"
+         y="55.775883">Σ</tspan></text>
   </g>
 </svg>

@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.ArrayList;
 import android.widget.EditText;
 import android.graphics.Typeface;
-import android.text.SpannableString;
 import android.text.style.StyleSpan;
 //import android.util.Log;
 
@@ -88,7 +87,6 @@ class CorrelationActivity
         String StdDev_ = getResources().getString( R.string.StdDev );
         String PearsonR_ = getResources().getString( R.string.PearsonR );
         String TestOfH0_ = getResources().getString( R.string.TestOfH0 );
-        String oneTailed_ = getResources().getString( R.string.oneTailed );
         String dof_ = getResources().getString( R.string.dof );
         String Probability_ = getResources().getString( R.string.Probability );
         String LinearRegression_
@@ -102,7 +100,7 @@ class CorrelationActivity
         if ( pairs.size() > 2 )
         {
             Stats.CorrelationTestResult corrRslt
-                    = Stats.linearCorrelationTest( pairs, 1 );
+                    = Stats.linearCorrelationTest( pairs, m_tail );
             reportPW.printf( "\n"
                              + "X: " + Mean_ + "=" + statFmt2 + lend2
                              + " " + StdDev_ + "=" + statFmt2 + "\n"
@@ -122,10 +120,10 @@ class CorrelationActivity
                                          new StyleSpan( Typeface.BOLD ) ) );
             
             reportPW.printf( "\n\n"
-                             + TestOfH0_ + " (ρ=0):\n"
+                             + TestOfH0_
+                             + " (ρ" + m_tail.h0RelationSymbol + "0):\n"
                              + "  t=%.3f (" + dof_ + "=%d)" + lend1
-                             + " " + Probability_
-                             + " (" + oneTailed_ + ") = ",
+                             + " " + Probability_ + " = ",
                              corrRslt.tResult.t,
                              corrRslt.tResult.degreesOfFreedom );
             start = reportSW.toString().length();
@@ -164,17 +162,7 @@ class CorrelationActivity
             }
         }
 
-        String reportString = reportSW.toString();
-        fixupH0s( reportString, textSpans );
-        
-        SpannableString analysisText
-                = new SpannableString( reportString );
-        for ( TextSpan ts : textSpans )
-        {
-            analysisText.setSpan( ts.style, ts.start, ts.end, 0 );
-        }
-
-        return analysisText;
+        return makeSpannableString( reportSW.toString(), textSpans );
     }
     
 //=============================================================================
