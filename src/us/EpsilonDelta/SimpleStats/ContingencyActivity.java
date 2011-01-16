@@ -35,6 +35,16 @@ class ContingencyActivity
         return R.layout.contingency;
     }
 
+//-----------------------------------------------------------------------------
+    
+    @Override
+    protected
+    int
+    getHelpTextId( )
+    {
+        return R.string.contingency_help_text;
+    }
+
 //=============================================================================
 
     @Override
@@ -96,7 +106,8 @@ class ContingencyActivity
     {
         StringWriter reportSW = new StringWriter( );
         PrintWriter reportPW = new PrintWriter( reportSW );
-        List< TextSpan > textSpans = new ArrayList< TextSpan >( );
+        List< StringUtil.TextSpan > textSpans
+                = new ArrayList< StringUtil.TextSpan >( );
 
         String TestOfIndependence_
                 = getResources().getString( R.string.TestOfIndependence );
@@ -134,7 +145,7 @@ class ContingencyActivity
             boolean preferFisher
                    = (contingencyRslt.minExpectedCellFreq < MIN_CHISQUARE_FREQ);
             if ( ! preferFisher )
-                textSpans.add( new TextSpan( start, end,
+                textSpans.add( new StringUtil.TextSpan( start, end,
                                              new StyleSpan( Typeface.BOLD ) ) );
 
             if ( contingencyRslt.sampleTotal < MAX_FISHER_SAMPLE_TOTAL )
@@ -149,7 +160,7 @@ class ContingencyActivity
                 reportPW.printf( "%.3f", fisherProb );
                 end = reportSW.toString().length();
                 if ( preferFisher )
-                    textSpans.add( new TextSpan( start, end,
+                    textSpans.add( new StringUtil.TextSpan( start, end,
                                              new StyleSpan( Typeface.BOLD ) ) );
 
                 fisherProb = Stats.fishersExactTest( table, 2 );
@@ -167,7 +178,8 @@ class ContingencyActivity
                 reportPW.printf( "\n\n"
                                  + "  χ² (" + YatesCorrection_ + "): "
                                  + "%.3f (" + dof_ + ": %d)" + lend1
-                                 + " " + Probability_ + ": ",
+                                 + " " + Probability_ 
+                                 + " (" + oneTailed_ + ") = ",
                              contingencyRslt.chiSquareResult.chiSquare,
                              contingencyRslt.chiSquareResult.degreesOfFreedom );
                 start = reportSW.toString().length();
@@ -177,7 +189,7 @@ class ContingencyActivity
 
                 end = reportSW.toString().length();
                 if ( preferFisher )
-                    textSpans.add( new TextSpan( start, end,
+                    textSpans.add( new StringUtil.TextSpan( start, end,
                                              new StyleSpan( Typeface.BOLD ) ) );
             }
         }
@@ -198,11 +210,11 @@ class ContingencyActivity
                              contingencyRslt.chiSquareResult.probability );
 
             int end = reportSW.toString().length();
-            textSpans.add( new TextSpan( start, end,
+            textSpans.add( new StringUtil.TextSpan( start, end,
                                          new StyleSpan( Typeface.BOLD ) ) );
         }
         
-        return makeSpannableString( reportSW.toString(), textSpans );
+        return StringUtil.makeSpannableString( reportSW.toString(), textSpans );
     }
     
 //=============================================================================

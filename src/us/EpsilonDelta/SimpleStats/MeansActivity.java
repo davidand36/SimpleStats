@@ -35,6 +35,16 @@ class MeansActivity
         return R.layout.means;
     }
 
+//-----------------------------------------------------------------------------
+    
+    @Override
+    protected
+    int
+    getHelpTextId( )
+    {
+        return R.string.means_help_text;
+    }
+
 //=============================================================================
 
     @Override
@@ -66,7 +76,8 @@ class MeansActivity
     {
         StringWriter reportSW = new StringWriter( );
         PrintWriter reportPW = new PrintWriter( reportSW );
-        List< TextSpan > textSpans = new ArrayList< TextSpan >( );
+        List< StringUtil.TextSpan > textSpans
+                = new ArrayList< StringUtil.TextSpan >( );
         String statFmt0 = "%." + precision + "f";
         String statFmt1 = "%." + (precision + 1) + "f";
         String statFmt2 = "%." + (precision + 2) + "f";
@@ -98,7 +109,7 @@ class MeansActivity
             reportPW.printf( Sample_ + " %d", (i + 1) );
 
             int end = reportSW.toString().length();
-            textSpans.add( new TextSpan( start, end,
+            textSpans.add( new StringUtil.TextSpan( start, end,
                                          new StyleSpan( Typeface.ITALIC ) ) );
 
             reportPW.printf( " " + size_ + "=%d", sample.size() );
@@ -115,7 +126,7 @@ class MeansActivity
                 reportPW.printf( statFmt2, sample.mean() );
 
                 end = reportSW.toString().length();
-                textSpans.add( new TextSpan( start, end,
+                textSpans.add( new StringUtil.TextSpan( start, end,
                                              new StyleSpan( Typeface.BOLD ) ) );
             
                 if ( sample.size() > 1 )
@@ -161,7 +172,7 @@ class MeansActivity
             reportPW.printf( "%.3f", meansEqVResult.probability );
             int end = reportSW.toString().length();
             if ( variancesEqual )
-                textSpans.add( new TextSpan( start, end,
+                textSpans.add( new StringUtil.TextSpan( start, end,
                                              new StyleSpan( Typeface.BOLD ) ) );
                 
             reportPW.printf( "\n"
@@ -175,7 +186,7 @@ class MeansActivity
             reportPW.printf( "%.3f", meansNoneqVResult.probability );
             end = reportSW.toString().length();
             if ( ! variancesEqual )
-                textSpans.add( new TextSpan( start, end,
+                textSpans.add( new StringUtil.TextSpan( start, end,
                                              new StyleSpan( Typeface.BOLD ) ) );
                 
             reportPW.printf( "\n"
@@ -189,7 +200,7 @@ class MeansActivity
                              varsResult.probability );
         }
 
-        return makeSpannableString( reportSW.toString(), textSpans );
+        return StringUtil.makeSpannableString( reportSW.toString(), textSpans );
     }
         
 //=============================================================================

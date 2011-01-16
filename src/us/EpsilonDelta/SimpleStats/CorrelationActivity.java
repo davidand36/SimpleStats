@@ -35,6 +35,16 @@ class CorrelationActivity
         return R.layout.correlation;
     }
 
+//-----------------------------------------------------------------------------
+    
+    @Override
+    protected
+    int
+    getHelpTextId( )
+    {
+        return R.string.correlation_help_text;
+    }
+
 //=============================================================================
 
     @Override
@@ -76,7 +86,8 @@ class CorrelationActivity
     {
         StringWriter reportSW = new StringWriter( );
         PrintWriter reportPW = new PrintWriter( reportSW );
-        List< TextSpan > textSpans = new ArrayList< TextSpan >( );
+        List< StringUtil.TextSpan > textSpans
+                = new ArrayList< StringUtil.TextSpan >( );
         String statFmt2 = "%." + (precision + 2) + "f";
 
         String Sample_ = getResources().getString( R.string.Sample );
@@ -116,7 +127,7 @@ class CorrelationActivity
             reportPW.printf( "%.3f", corrRslt.r );
             
             int end = reportSW.toString().length();
-            textSpans.add( new TextSpan( start, end,
+            textSpans.add( new StringUtil.TextSpan( start, end,
                                          new StyleSpan( Typeface.BOLD ) ) );
             
             reportPW.printf( "\n\n"
@@ -131,7 +142,7 @@ class CorrelationActivity
             reportPW.printf(  "%.3f", corrRslt.tResult.probability );
 
             end = reportSW.toString().length();
-            textSpans.add( new TextSpan( start, end,
+            textSpans.add( new StringUtil.TextSpan( start, end,
                                          new StyleSpan( Typeface.BOLD ) ) );
 
             if ( corrRslt.variance0 > 0. )
@@ -162,7 +173,7 @@ class CorrelationActivity
             }
         }
 
-        return makeSpannableString( reportSW.toString(), textSpans );
+        return StringUtil.makeSpannableString( reportSW.toString(), textSpans );
     }
     
 //=============================================================================

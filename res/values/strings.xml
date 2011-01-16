@@ -57,4 +57,63 @@
   <string name="contingency_sampleDataPrompt">Sample data:</string>
   <string name="contingency_tooFewRowsColsError">At least 2 rows and columns are required.</string>
   <string name="contingency_wrongNumberOfEntriesError">The wrong number of counts were entered: </string>
+
+  <string name="help_menu_title">Help</string>
+  <string name="hypotheses_menu_title">Hypotheses</string>
+  <string name="about_menu_title">About</string>
+
+  <string name="helpTitle">Help</string>
+
+  <string name="mean_help_text">
+The Mean test analyzes a random sample of real numbers from a population with an approximately normal distribution.
+\n
+\nEnter the sample data however you want. The numbers can be separated by almost anything: newlines, spaces, punctuation, or even text. Then select the hypothesized relation and value, and click Analyze.
+\n
+\nSample statistics computed are: minimum and maximum (useful for checking for data-entry errors), median (50th percentile), mean (average), and standard deviation (the square root of the unbiased variance estimate).
+\n
+\nThe t test tests an hypothesis about the population mean, µ, namely whether it is less than (or greater than or simply not equal to) a specified value.
+  </string> <!--mean_help_text-->
+
+  <string name="means_help_text">
+The Means test analyzes random samples of real numbers from two populations with approximately normal distributions.
+\n
+\nEnter the sample data however you want. The numbers can be separated by almost anything: newlines, spaces, punctuation, or even text. Then select the hypothesized relation and click Analyze.
+\n
+\nStatistics computed for each sample are: minimum and maximum (useful for checking for data-entry errors), median (50th percentile), mean (average), and standard deviation (the square root of the unbiased variance estimate).
+\n
+\nThe t test tests an hypothesis about the means of the two populations, µ₁ and µ₂, namely whether the first is less than (or greater than or simply not equal to) the second.
+\n
+\nActually, two t tests are performed. For the first the null hypothesis is that the two distributions not only have the same mean, but also the same variance. The second tests the means without making that assumption. An F test is presented which tests the assumption that the variances are equal.
+  </string> <!--means_help_text-->
+
+  <string name="correlation_help_text">
+The Correlation test analyzes a random sample of pairs of real numbers representing two variables (which are referred to as X and Y) from a population with an approximately bivariate normal distribution.
+\n
+\nEnter the sample data however you want. The numbers can be separated by almost anything: newlines, spaces, punctuation, or even text. Then select the hypothesized relation and click Analyze.
+\n
+\nSample statistics computed are: mean (average) and standard deviation (the square root of the unbiased variance estimate) for each variable, and Pearson\'s correlation coefficient (r), a measure of the linear dependence of the variables.
+\n
+\nThe t test tests an hypothesis about the correlation, ρ, namely whether it is less than (or greater than or simply not equal to) zero.
+\n
+\nThe linear regression estimates the coefficients of the equation Y = α + ßX + ε (where ε is a residual “error” term with a mean of zero) that best fit the data. Both the mean and standard deviation of the estimated coefficients are given as well as the standard deviation of the residual.
+  </string> <!--correlation_help_text-->
+
+  <string name="contingency_help_text">
+The Contingency Table test analyzes the relation between two categorical variables. Each variable has a small number of possible values and the table contains the counts, i.e. the observed frequency of each combination of values of the variables.
+\n
+\nEnter the number of rows and columns and the table sample data. The numbers can be separated by almost anything: newlines, spaces, punctuation, or even text. Then click Analyze.
+\n
+\nThe χ² (Chi-square) test tests the hypothesis that the two variables are independent.
+\n
+\nFor a 2x2 table the test is one-tailed (because the “direction” of the relation can be inferred from the data). (The probability for a two-tailed test would be twice that reported.) In addition a Fisher\'s “exact” test is presented. (If the sample size is large an equivalent  χ² test with Yate\'s correction is used.) This test is most appropriate when the margins (row and column totals) are considered fixed, but may be too conservative otherwise.
+  </string> <!--contingency_help_text-->
+
+  <string name="hypotheses_help_text">
+Statistical tests involve hypotheses. Often one wishes to test a new theory against the \“conventional wisdom\” or \“status quo.\” The latter implies the \“null hypothesis,\” denoted  H₀; the \“alternative hypothesis,\”  H₁, is that implied by the theory one hopes to verify.
+  </string> <!--hypotheses_help_text-->
+
+  <string name="about_help_text">
+Copyright © 2011 David M. Anderson
+  </string> <!--about_help_text-->
+
 </resources>

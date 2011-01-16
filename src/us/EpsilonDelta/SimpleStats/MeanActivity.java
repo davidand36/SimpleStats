@@ -38,6 +38,16 @@ class MeanActivity
         return R.layout.mean;
     }
 
+//-----------------------------------------------------------------------------
+    
+    @Override
+    protected
+    int
+    getHelpTextId( )
+    {
+        return R.string.mean_help_text;
+    }
+
 //=============================================================================
 
     @Override
@@ -85,7 +95,8 @@ class MeanActivity
     {
         StringWriter reportSW = new StringWriter( );
         PrintWriter reportPW = new PrintWriter( reportSW );
-        List< TextSpan > textSpans = new ArrayList< TextSpan >( );
+        List< StringUtil.TextSpan > textSpans
+                = new ArrayList< StringUtil.TextSpan >( );
         String statFmt0 = "%." + precision + "f";
         String statFmt1 = "%." + (precision + 1) + "f";
         String statFmt2 = "%." + (precision + 2) + "f";
@@ -118,7 +129,7 @@ class MeanActivity
             reportPW.printf( statFmt2, sample.mean() );
 
             int end = reportSW.toString().length();
-            textSpans.add( new TextSpan( start, end,
+            textSpans.add( new StringUtil.TextSpan( start, end,
                                          new StyleSpan( Typeface.BOLD ) ) );
             
             if ( sample.size() > 1 )
@@ -143,12 +154,12 @@ class MeanActivity
                 reportPW.printf(  "%.3f", result.probability );
 
                 end = reportSW.toString().length();
-                textSpans.add( new TextSpan( start, end,
+                textSpans.add( new StringUtil.TextSpan( start, end,
                                              new StyleSpan( Typeface.BOLD ) ) );
             }
         }
 
-        return makeSpannableString( reportSW.toString(), textSpans );
+        return StringUtil.makeSpannableString( reportSW.toString(), textSpans );
     }
 
     

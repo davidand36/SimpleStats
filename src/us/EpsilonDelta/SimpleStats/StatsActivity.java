@@ -17,6 +17,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -25,7 +27,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.util.DisplayMetrics;
 import android.text.SpannableString;
-import android.text.style.CharacterStyle;
 // import android.util.Log;
 
 
@@ -44,6 +45,8 @@ class StatsActivity
 
     protected abstract CharSequence getAnalysisText( );
 
+    protected abstract int getHelpTextId( );
+    
 //=============================================================================
 
     @Override
@@ -125,7 +128,8 @@ class StatsActivity
             {
                 TextView textView = (TextView)child;
                 CharSequence text = textView.getText( );
-                SpannableString ss = makeSpannableString( text.toString() );
+                SpannableString ss
+                        = StringUtil.makeSpannableString( text.toString() );
                 textView.setText( ss );
                 textView.invalidate( );
             }
@@ -140,12 +144,60 @@ class StatsActivity
     {
         CharSequence analysisText = getAnalysisText( );
         Intent intent = new Intent( getApplicationContext(),
-                                    AnalysisActivity.class );
-        intent.putExtra( "us.EpsilonDelta.SimpleStats.ANALYSIS_TEXT",
-                         analysisText );
+                                    TextActivity.class );
+        intent.putExtra( "us.EpsilonDelta.SimpleStats.LAYOUT_ID",
+                         R.layout.plain_text );
+        intent.putExtra( "us.EpsilonDelta.SimpleStats.TEXT", analysisText );
         startActivity( intent );
     }
 
+//=============================================================================
+
+    @Override
+    public
+    boolean
+    onCreateOptionsMenu( Menu menu )
+    {
+        super.onCreateOptionsMenu( menu );
+        getMenuInflater().inflate( R.menu.options, menu );
+
+        Intent intent = new Intent( getApplicationContext(),
+                                    TextActivity.class );
+        intent.putExtra( "us.EpsilonDelta.SimpleStats.LAYOUT_ID",
+                         R.layout.plain_text );
+        intent.putExtra( "us.EpsilonDelta.SimpleStats.TEXT_ID",
+                         getHelpTextId() );
+        menu.findItem( R.id.help_menu_item ).setIntent( intent );
+
+        intent = new Intent( getApplicationContext(), TextActivity.class );
+        intent.putExtra( "us.EpsilonDelta.SimpleStats.LAYOUT_ID",
+                         R.layout.plain_text );
+        intent.putExtra( "us.EpsilonDelta.SimpleStats.TEXT_ID",
+                         R.string.hypotheses_help_text );
+        menu.findItem( R.id.hypotheses_menu_item ).setIntent( intent );
+
+        intent = new Intent( getApplicationContext(), TextActivity.class );
+        intent.putExtra( "us.EpsilonDelta.SimpleStats.LAYOUT_ID",
+                         R.layout.plain_text );
+        intent.putExtra( "us.EpsilonDelta.SimpleStats.TEXT_ID",
+                         R.string.about_help_text );
+        menu.findItem( R.id.about_menu_item ).setIntent( intent );
+
+        return true;
+    }
+
+//-----------------------------------------------------------------------------
+
+    @Override
+    public
+    boolean
+    onOptionsItemSelected( MenuItem item )
+    {
+        super.onOptionsItemSelected( item );
+        startActivity( item.getIntent() );
+        return true;
+    }
+    
 //=============================================================================
 
     protected
@@ -156,62 +208,6 @@ class StatsActivity
         getWindowManager().getDefaultDisplay().getMetrics( metrics );
         return (metrics.widthPixels <= metrics.heightPixels);
     }
-
-//=============================================================================
-
-    protected static
-    class TextSpan
-    {
-        TextSpan( int start, int end, CharacterStyle style )
-        {
-            this.start = start;
-            this.end = end;
-            this.style = style;
-        }
-        
-        public final int start;
-        public final int end;
-        public final CharacterStyle style;
-    }
-
-//-----------------------------------------------------------------------------
-
-    protected static
-    SpannableString
-    makeSpannableString( String text, List< TextSpan > textSpans )
-    {
-        text = fixupSubscripts( text, textSpans );
-        
-        SpannableString ss = new SpannableString( text );
-        for ( TextSpan ts : textSpans )
-        {
-            ss.setSpan( ts.style, ts.start, ts.end, 0 );
-        }
-        return ss;
-    }
-    
-//.............................................................................
-
-    protected static
-    SpannableString
-    makeSpannableString( String text )
-    {
-        return makeSpannableString( text, new ArrayList< TextSpan >() );
-    }
-    
-//-----------------------------------------------------------------------------
-    
-    private static
-    String
-    fixupSubscripts( String text, List< TextSpan > textSpans )
-    {
-        //Android font currently is missing ₀ (x2080) character,
-        // so we'll replace it with 0. (Subscripting is possible, but
-        // turns out to be tricky.)
-        //For a consistent appearance, we'll also replace ₁ (x2081) in H₁.
-        return text.replaceAll( "₀", "0" ).replaceAll( "H₁", "H1" );
-    }
-
 
 //=============================================================================
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/analysis_layout"
+              android:id="@+id/plain_text_layout"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:orientation="vertical">
   <ScrollView android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:scrollbars="vertical">
-    <TextView android:id="@+id/analysis_text"
+    <TextView android:id="@+id/text"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:textSize="@dimen/normalText"
