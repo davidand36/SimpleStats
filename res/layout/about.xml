@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/about_layout"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical">
+  <ImageView android:src="@drawable/logo_epsilon_delta"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:scaleType="centerInside"
+             android:paddingTop="15dp"
+             android:paddingBottom="15dp"
+             android:paddingLeft="20dp"
+             android:paddingRight="20dp"
+             />
+  <ScrollView android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:scrollbars="vertical">
+    <TextView android:id="@+id/text"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:textSize="@dimen/normalText"
+              android:clickable="false"
+              android:focusable="false"
+              />
+  </ScrollView>
+</LinearLayout>

@@ -178,7 +178,7 @@ class StatsActivity
 
         intent = new Intent( getApplicationContext(), TextActivity.class );
         intent.putExtra( "us.EpsilonDelta.SimpleStats.LAYOUT_ID",
-                         R.layout.plain_text );
+                         R.layout.about );
         intent.putExtra( "us.EpsilonDelta.SimpleStats.TEXT_ID",
                          R.string.about_help_text );
         menu.findItem( R.id.about_menu_item ).setIntent( intent );
