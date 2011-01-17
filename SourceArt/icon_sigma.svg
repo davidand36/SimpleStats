@@ -14,10 +14,10 @@
    id="svg2892"
    version="1.1"
    inkscape:version="0.48.0 r9654"
-   sodipodi:docname="SigmaIcon.svg"
-   inkscape:export-filename="/home/dma/Projects/SimpleStats/SourceArt/SigmaIcon.png"
-   inkscape:export-xdpi="101.25"
-   inkscape:export-ydpi="101.25">
+   sodipodi:docname="icon_sigma.svg"
+   inkscape:export-filename="/home/dma/Projects/Android/SimpleStats/res/drawable-ldpi/icon_sigma.png"
+   inkscape:export-xdpi="50.619999"
+   inkscape:export-ydpi="50.619999">
   <defs
      id="defs2894">
     <inkscape:perspective
@@ -52,7 +52,7 @@
      inkscape:zoom="7.7781746"
      inkscape:cx="30.537129"
      inkscape:cy="33.074054"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="true"
      inkscape:document-units="px"
      inkscape:grid-bbox="true"
@@ -70,7 +70,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -78,7 +78,8 @@
      id="layer1"
      inkscape:label="Background"
      inkscape:groupmode="layer"
-     transform="translate(0,-37)">
+     transform="translate(0,-37)"
+     sodipodi:insensitive="true">
     <rect
        style="fill:#76b3df;fill-opacity:1"
        id="rect3619"
@@ -86,13 +87,14 @@
        height="64"
        x="0"
        y="0"
-       ry="16" />
+       ry="8" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Text"
-     transform="translate(0,-37)">
+     transform="translate(0,-37)"
+     sodipodi:insensitive="true">
     <text
        xml:space="preserve"
        style="font-size:72px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ffff00;fill-opacity:1;stroke:none;font-family:FreeSerif;-inkscape-font-specification:FreeSerif"
