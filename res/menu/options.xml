@@ -6,7 +6,7 @@
   </item>
   <item android:id="@+id/hypotheses_menu_item"
         android:title="@string/hypotheses_menu_title"
-        android:icon="@android:drawable/ic_menu_more">
+        android:icon="@android:drawable/ic_menu_help">
   </item>
   <item android:id="@+id/about_menu_item"
         android:title="@string/about_menu_title"
