@@ -17,19 +17,23 @@
     </activity>
 
     <activity android:name=".MeanActivity"
-              android:label="@string/meanTitle">
+              android:label="@string/meanTitle"
+              android:windowSoftInputMode="adjustPan">
     </activity>
 
     <activity android:name=".MeansActivity"
-              android:label="@string/meansTitle">
+              android:label="@string/meansTitle"
+              android:windowSoftInputMode="adjustPan">
     </activity>
 
     <activity android:name=".CorrelationActivity"
-              android:label="@string/meansTitle">
+              android:label="@string/meansTitle"
+              android:windowSoftInputMode="adjustPan">
     </activity>
 
     <activity android:name=".ContingencyActivity"
-              android:label="@string/meansTitle">
+              android:label="@string/meansTitle"
+              android:windowSoftInputMode="adjustPan">
     </activity>
 
     <activity android:name=".TextActivity"
