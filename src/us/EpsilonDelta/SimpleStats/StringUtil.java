@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.ArrayList;
 import android.text.SpannableString;
 import android.text.style.CharacterStyle;
+import android.text.style.SubscriptSpan;
 
 
 //*****************************************************************************
@@ -54,7 +55,30 @@ class StringUtil
         // so we'll replace it with 0.
         //For a consistent appearance, we'll also replace ₁ (x2081) in H₁.
         String newText = text.replaceAll( "₀", "0" ).replaceAll( "H₁", "H1" );
-        //!!! Subscripts
+
+        int h0Loc = -1;
+        do
+        {
+            h0Loc = newText.indexOf( "H0", h0Loc );
+            if ( h0Loc >= 0 )
+            {
+                textSpans.add( new TextSpan( h0Loc + 1, h0Loc + 2,
+                                             new SubscriptSpan( ) ) );
+                h0Loc += 2;
+            }
+        } while ( h0Loc >= 0 );
+        int h1Loc = -1;
+        do
+        {
+            h1Loc = newText.indexOf( "H1", h1Loc );
+            if ( h1Loc >= 0 )
+            {
+                textSpans.add( new TextSpan( h1Loc + 1, h1Loc + 2,
+                                             new SubscriptSpan( ) ) );
+                h1Loc += 2;
+            }
+        } while ( h1Loc >= 0 );
+
         return newText;
     }
 
