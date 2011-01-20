@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.os.Bundle;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,6 @@ import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.util.DisplayMetrics;
 import android.text.SpannableString;
 // import android.util.Log;
 
@@ -37,7 +37,6 @@ public
 abstract
 class StatsActivity
     extends Activity
-    implements OnClickListener
 {                                                               //StatsActivity
 //-----------------------------------------------------------------------------
 
@@ -82,7 +81,7 @@ class StatsActivity
     {
         Button analyzeButton = (Button)findViewById( R.id.analyze );
         if ( analyzeButton != null )
-            analyzeButton.setOnClickListener( this );
+            analyzeButton.setOnClickListener( new AnalyzeButtonListener() );
     }
 
 //-----------------------------------------------------------------------------
@@ -138,21 +137,6 @@ class StatsActivity
     
 //=============================================================================
 
-    public
-    void
-    onClick( View v )
-    {
-        CharSequence analysisText = getAnalysisText( );
-        Intent intent = new Intent( getApplicationContext(),
-                                    TextActivity.class );
-        intent.putExtra( "us.EpsilonDelta.SimpleStats.LAYOUT_ID",
-                         R.layout.plain_text );
-        intent.putExtra( "us.EpsilonDelta.SimpleStats.TEXT", analysisText );
-        startActivity( intent );
-    }
-
-//=============================================================================
-
     @Override
     public
     boolean
@@ -204,10 +188,36 @@ class StatsActivity
     boolean
     isPortrait( )
     {
-        DisplayMetrics metrics = new DisplayMetrics( );
-        getWindowManager().getDefaultDisplay().getMetrics( metrics );
-        return (metrics.widthPixels <= metrics.heightPixels);
+        return getResources().getConfiguration().orientation
+                == Configuration.ORIENTATION_PORTRAIT;
     }
+
+//=============================================================================
+
+
+    private
+    class
+    AnalyzeButtonListener
+        implements OnClickListener
+    {                                                   //AnalyzeButtonListener
+    //-------------------------------------------------------------------------
+
+        public
+        void
+        onClick( View v )
+        {
+            CharSequence analysisText = getAnalysisText( );
+            Intent intent = new Intent( getApplicationContext(),
+                                        TextActivity.class );
+            intent.putExtra( "us.EpsilonDelta.SimpleStats.LAYOUT_ID",
+                             R.layout.plain_text );
+            intent.putExtra( "us.EpsilonDelta.SimpleStats.TEXT", analysisText );
+            startActivity( intent );
+        }
+
+    //-------------------------------------------------------------------------
+    }                                                   //AnalyzeButtonListener
+
 
 //=============================================================================
 
@@ -254,7 +264,7 @@ class StatsActivity
     
 //.............................................................................
 
-    View m_layout = null;
+    private View m_layout = null;
     private static Stats.Tail[ ] ms_tails
         = { Stats.Tail.BOTH, Stats.Tail.LOWER, Stats.Tail.UPPER };
     private int m_tailIndex = 0;
