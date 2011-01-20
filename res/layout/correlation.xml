@@ -27,7 +27,8 @@
   <LinearLayout android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
     <TextView android:text="@string/correlation_H0Prompt"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
