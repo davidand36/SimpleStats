@@ -34,28 +34,28 @@ public class SimpleStatsActivity
         
         final TabHost tabHost = getTabHost();
         
-        String tabTitle = getResources().getString( R.string.meanTitle );
+        String tabTitle = getResources().getString( R.string.mean_Title );
         Drawable tabIcon = getResources().getDrawable( R.drawable.tab_mu );
         Intent intent = new Intent( appContext, MeanActivity.class );
         tabHost.addTab( tabHost.newTabSpec( "meanTab" )
                         .setIndicator( tabTitle, tabIcon )
                         .setContent( intent ) );
 
-        tabTitle = getResources().getString( R.string.meansTitle );
+        tabTitle = getResources().getString( R.string.means_Title );
         tabIcon = getResources().getDrawable( R.drawable.tab_mu2 );
         intent = new Intent( appContext, MeansActivity.class );
         tabHost.addTab( tabHost.newTabSpec( "meansTab" )
                         .setIndicator( tabTitle, tabIcon )
                         .setContent( intent ) );
 
-        tabTitle = getResources().getString( R.string.correlationTitle );
+        tabTitle = getResources().getString( R.string.correlation_Title );
         tabIcon = getResources().getDrawable( R.drawable.tab_rho );
         intent = new Intent( appContext, CorrelationActivity.class );
         tabHost.addTab( tabHost.newTabSpec( "correlationTab" )
                         .setIndicator( tabTitle, tabIcon )
                         .setContent( intent ) );
 
-        tabTitle = getResources().getString( R.string.contingencyTitle );
+        tabTitle = getResources().getString( R.string.contingency_Title );
         tabIcon = getResources().getDrawable( R.drawable.tab_chi2 );
         intent = new Intent( appContext, ContingencyActivity.class );
         tabHost.addTab( tabHost.newTabSpec( "contingencyTab" )

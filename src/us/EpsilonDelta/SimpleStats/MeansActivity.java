@@ -82,6 +82,8 @@ class MeansActivity
         String statFmt1 = "%." + (precision + 1) + "f";
         String statFmt2 = "%." + (precision + 2) + "f";
 
+        String NotEnoughForTestError_
+                = getResources().getString( R.string.NotEnoughForTestError );
         String Sample_ = getResources().getString( R.string.Sample );
         String size_ = getResources().getString( R.string.size );
         String Min_ = getResources().getString( R.string.Min );
@@ -137,7 +139,11 @@ class MeansActivity
             }
         }
 
-        if ( (samples[ 0 ].size() > 1) && (samples[ 1 ].size() > 1) )
+        if ( (samples[ 0 ].size() <= 1) || (samples[ 1 ].size() <= 1) )
+        {
+            reportPW.printf( "\n\n" + NotEnoughForTestError_ );
+        }
+        else
         {
 
             Stats.TTestResult meansEqVResult

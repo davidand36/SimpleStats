@@ -29,40 +29,45 @@
   <string name="FishersExactTest">Fisher\'s Exact Test</string>
   <string name="YatesCorrection">Yates\'s correction</string>
 
-  <string name="analysisTitle">Data Analysis</string>
+  <string name="DataAnalysis">Data Analysis</string>
+  <string name="Help">Help</string>
+  <string name="AboutHypotheses">About Hypotheses</string>
+  <string name="About">About</string>
 
-  <string name="meanTitle">Mean</string>
+  <string name="NoDataError">No data were entered for analysis.</string>
+  <string name="NotEnoughForTestError">Not enough sample data for statistical test.</string>
+
+  <string name="mean_Title">Mean</string>
   <string name="mean_sampleDataPrompt">Sample data:</string>
-  <string name="mean_H0Prompt">H₀: µ</string>
-  <string name="mean_H1Prompt">H₁: µ </string>
+  <string name="mean_H0Prompt">"H₀: µ"</string>
+  <string name="mean_H1Prompt">"H₁: µ"</string>
 
-  <string name="meansTitle">Means</string>
+  <string name="means_Title">Means</string>
   <string name="means_sample1DataPrompt">Sample 1 data:</string>
   <string name="means_sample2DataPrompt">Sample 2 data:</string>
-  <string name="means_H0Prompt">H₀: µ₁ </string>
-  <string name="means_H1Prompt">;  H₁: µ₁ </string>
-  <string name="means_Mu2"> µ₂</string>
+  <string name="means_H0Prompt">"H₀: µ₁"</string>
+  <string name="means_H1Prompt">";  H₁: µ₁"</string>
+  <string name="means_Mu2">"µ₂"</string>
 
-  <string name="correlationTitle">Correlation</string>
+  <string name="correlation_Title">Correlation</string>
   <string name="correlation_sampleDataPrompt">Sample data:</string>
-  <string name="correlation_oddNumberError">An odd number of numbers was entered: </string>
-  <string name="correlation_H0Prompt">H₀: ρ </string>
-  <string name="correlation_H1Prompt">;  H₁: ρ </string>
-  <string name="correlation_0"> 0</string>
+  <string name="correlation_oddNumberError">"An odd number of numbers was entered: "</string>
+  <string name="correlation_H0Prompt">"H₀: ρ"</string>
+  <string name="correlation_H1Prompt">";  H₁: ρ"</string>
+  <string name="correlation_0">"0"</string>
 
-  <string name="contingencyTitle">Contingency</string>
-  <string name="contingency_TableSize">Table size: </string>
-  <string name="contingency_x"> x </string>
-  <string name="contingency_rowsXcols"> (rows x columns)</string>
+  <string name="contingency_Title">Contingency</string>
+  <string name="contingency_TableSize">"Table size: "</string>
+  <string name="contingency_x">" x "</string>
+  <string name="contingency_rowsXcols">" (rows x columns)"</string>
   <string name="contingency_sampleDataPrompt">Sample data:</string>
-  <string name="contingency_tooFewRowsColsError">At least 2 rows and columns are required.</string>
-  <string name="contingency_wrongNumberOfEntriesError">The wrong number of counts were entered: </string>
+  <string name="contingency_tooFewRowsColsError">At least 2 non-zero rows and columns are required.</string>
+  <string name="contingency_wrongNumberOfEntriesError">"The wrong number of counts were entered: "</string>
+  <string name="contingency_negativeCountError">Frequency counts cannot be negative.</string>
 
-  <string name="help_menu_title">Help</string>
-  <string name="hypotheses_menu_title">Hypotheses</string>
-  <string name="about_menu_title">About</string>
-
-  <string name="helpTitle">Help</string>
+  <string name="help_menu_label">Help</string>
+  <string name="hypotheses_menu_label">Hypotheses</string>
+  <string name="about_menu_label">About</string>
 
   <string name="mean_help_text">
 The Mean test analyzes a random sample of real numbers from a population with an approximately normal distribution.

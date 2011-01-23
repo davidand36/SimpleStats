@@ -101,6 +101,9 @@ class MeanActivity
         String statFmt1 = "%." + (precision + 1) + "f";
         String statFmt2 = "%." + (precision + 2) + "f";
 
+        String NoDataError_ = getResources().getString( R.string.NoDataError );
+        String NotEnoughForTestError_
+                = getResources().getString( R.string.NotEnoughForTestError );
         String Sample_ = getResources().getString( R.string.Sample );
         String size_ = getResources().getString( R.string.size );
         String Min_ = getResources().getString( R.string.Min );
@@ -115,9 +118,13 @@ class MeanActivity
         //Extra line ends and spaces if in portrait orientation:
         String lend1 = (isPortrait()  ?  "\n "  :  "");
         
-        reportPW.printf( Sample_ + " " + size_ + "=%d", sample.size() );
-        if ( sample.size() > 0 )
+        if ( sample.size() == 0 )
         {
+            reportPW.printf( NoDataError_ );
+        }
+        else
+        {
+            reportPW.printf( Sample_ + " " + size_ + "=%d", sample.size() );
             reportPW.printf( "\n"
                              + "  " + Min_ + "=" + statFmt0 + lend1
                              + " " + Max_ + "=" + statFmt0 + lend1
@@ -132,7 +139,11 @@ class MeanActivity
             textSpans.add( new StringUtil.TextSpan( start, end,
                                          new StyleSpan( Typeface.BOLD ) ) );
             
-            if ( sample.size() > 1 )
+            if ( sample.size() <= 1 )
+            {
+                reportPW.printf( "\n\n" + NotEnoughForTestError_ );
+            }
+            else
             {
                 reportPW.printf( lend1 + " " + StdDev_ + "=" + statFmt2,
                                  Math.sqrt( sample.variance() ) );

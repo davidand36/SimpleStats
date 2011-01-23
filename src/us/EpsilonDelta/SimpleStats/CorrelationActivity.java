@@ -90,10 +90,11 @@ class CorrelationActivity
                 = new ArrayList< StringUtil.TextSpan >( );
         String statFmt2 = "%." + (precision + 2) + "f";
 
+        String NoDataError_ = getResources().getString( R.string.NoDataError );
+        String NotEnoughForTestError_
+                = getResources().getString( R.string.NotEnoughForTestError );
         String Sample_ = getResources().getString( R.string.Sample );
         String size_ = getResources().getString( R.string.size );
-        String Min_ = getResources().getString( R.string.Min );
-        String Max_ = getResources().getString( R.string.Max );
         String Mean_ = getResources().getString( R.string.Mean );
         String StdDev_ = getResources().getString( R.string.StdDev );
         String PearsonR_ = getResources().getString( R.string.PearsonR );
@@ -107,8 +108,16 @@ class CorrelationActivity
         String lend1 = (isPortrait()  ?  "\n "  :  "");
         String lend2 = (isPortrait()  ?  "\n "  :  "");
         
-        reportPW.printf( Sample_ + " " + size_ + "=%d", pairs.size() );
-        if ( pairs.size() > 2 )
+        if ( pairs.size() == 0 )
+        {
+            reportPW.printf( NoDataError_ );
+        }
+        else if ( pairs.size() <= 2 )
+        {
+            reportPW.printf( Sample_ + " " + size_ + "=%d", pairs.size() );
+            reportPW.printf( "\n\n" + NotEnoughForTestError_ );
+        }
+        else
         {
             Stats.CorrelationTestResult corrRslt
                     = Stats.linearCorrelationTest( pairs, m_tail );

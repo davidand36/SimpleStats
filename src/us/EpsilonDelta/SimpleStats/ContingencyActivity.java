@@ -109,6 +109,10 @@ class ContingencyActivity
         List< StringUtil.TextSpan > textSpans
                 = new ArrayList< StringUtil.TextSpan >( );
 
+        String NegativeCountError_ = getResources().getString(
+            R.string.contingency_negativeCountError );
+        String TooFewRowsColsError_ = getResources().getString(
+            R.string.contingency_tooFewRowsColsError );
         String TestOfIndependence_
                 = getResources().getString( R.string.TestOfIndependence );
         String FishersExactTest_
@@ -125,72 +129,92 @@ class ContingencyActivity
         
         boolean is2x2 = ((table.length == 2) && (table[ 0 ].length == 2));
 
-        if ( is2x2 )
+        boolean negativeCell = false;
+        for ( Integer[] row : table )
+            for ( Integer cell : row )
+                if ( cell < 0 )
+                    negativeCell = true;
+        
+        if ( negativeCell )
+        {
+            reportPW.printf( NegativeCountError_ );
+        }
+        else if ( is2x2 )
         {
             Stats.ContingencyTableResult contingencyRslt
                     = Stats.chiSquareContingencyTableTest( table, false );
 
-            reportPW.printf( TestOfIndependence_ + ":\n"
-                             + "  χ²=%.3f (" + dof_ + "=%d)" + lend1
-                             + " " + Probability_ 
-                             + " (" + oneTailed_ + ") = ",
-                             contingencyRslt.chiSquareResult.chiSquare,
-                             contingencyRslt.chiSquareResult.degreesOfFreedom );
-            int start = reportSW.toString().length();
-
-            reportPW.printf(  "%.3f",
-                             contingencyRslt.chiSquareResult.probability / 2. );
-
-            int end = reportSW.toString().length();
-            boolean preferFisher
-                   = (contingencyRslt.minExpectedCellFreq < MIN_CHISQUARE_FREQ);
-            if ( ! preferFisher )
-                textSpans.add( new StringUtil.TextSpan( start, end,
-                                             new StyleSpan( Typeface.BOLD ) ) );
-
-            if ( contingencyRslt.sampleTotal < MAX_FISHER_SAMPLE_TOTAL )
+            if ( contingencyRslt.chiSquareResult.degreesOfFreedom < 1 )
             {
-                double fisherProb = Stats.fishersExactTest( table, 1 );
-
-                reportPW.printf( "\n\n"
-                                 + FishersExactTest_ + ":\n"
-                                 + "  " + Probability_
-                                 + " (" + oneTailed_ + ") = " );
-                start = reportSW.toString().length();
-                reportPW.printf( "%.3f", fisherProb );
-                end = reportSW.toString().length();
-                if ( preferFisher )
-                    textSpans.add( new StringUtil.TextSpan( start, end,
-                                             new StyleSpan( Typeface.BOLD ) ) );
-
-                fisherProb = Stats.fishersExactTest( table, 2 );
-                reportPW.printf( "\n"
-                                 + "  " + Probability_
-                                 + " (" + twoTailed_ + ") = " );
-                start = reportSW.toString().length();
-                reportPW.printf( "%.3f", fisherProb );
+                reportPW.printf( TooFewRowsColsError_ );
             }
             else
             {
-                contingencyRslt
-                        = Stats.chiSquareContingencyTableTest( table, true );
-
-                reportPW.printf( "\n\n"
-                                 + "  χ² (" + YatesCorrection_ + "): "
-                                 + "%.3f (" + dof_ + ": %d)" + lend1
+                reportPW.printf( TestOfIndependence_ + ":\n"
+                                 + "  χ²=%.3f (" + dof_ + "=%d)" + lend1
                                  + " " + Probability_ 
                                  + " (" + oneTailed_ + ") = ",
                              contingencyRslt.chiSquareResult.chiSquare,
                              contingencyRslt.chiSquareResult.degreesOfFreedom );
-                start = reportSW.toString().length();
+                int start = reportSW.toString().length();
 
                 reportPW.printf(  "%.3f",
                              contingencyRslt.chiSquareResult.probability / 2. );
 
-                end = reportSW.toString().length();
-                if ( preferFisher )
-                    textSpans.add( new StringUtil.TextSpan( start, end,
+                int end = reportSW.toString().length();
+                boolean preferFisher = (contingencyRslt.minExpectedCellFreq
+                                        < MIN_CHISQUARE_FREQ);
+                if ( ! preferFisher )
+                    textSpans.add(
+                        new StringUtil.TextSpan( start, end,
                                              new StyleSpan( Typeface.BOLD ) ) );
+
+                if ( contingencyRslt.sampleTotal < MAX_FISHER_SAMPLE_TOTAL )
+                {
+                    double fisherProb = Stats.fishersExactTest( table, 1 );
+
+                    reportPW.printf( "\n\n"
+                                     + FishersExactTest_ + ":\n"
+                                     + "  " + Probability_
+                                     + " (" + oneTailed_ + ") = " );
+                    start = reportSW.toString().length();
+                    reportPW.printf( "%.3f", fisherProb );
+                    end = reportSW.toString().length();
+                    if ( preferFisher )
+                        textSpans.add(
+                            new StringUtil.TextSpan( start, end,
+                                             new StyleSpan( Typeface.BOLD ) ) );
+
+                    fisherProb = Stats.fishersExactTest( table, 2 );
+                    reportPW.printf( "\n"
+                                     + "  " + Probability_
+                                     + " (" + twoTailed_ + ") = " );
+                    start = reportSW.toString().length();
+                    reportPW.printf( "%.3f", fisherProb );
+                }
+                else
+                {
+                    contingencyRslt
+                           = Stats.chiSquareContingencyTableTest( table, true );
+
+                    reportPW.printf( "\n\n"
+                                     + "  χ² (" + YatesCorrection_ + "): "
+                                     + "%.3f (" + dof_ + ": %d)" + lend1
+                                     + " " + Probability_ 
+                                     + " (" + oneTailed_ + ") = ",
+                             contingencyRslt.chiSquareResult.chiSquare,
+                             contingencyRslt.chiSquareResult.degreesOfFreedom );
+                    start = reportSW.toString().length();
+
+                    reportPW.printf(  "%.3f",
+                             contingencyRslt.chiSquareResult.probability / 2. );
+
+                    end = reportSW.toString().length();
+                    if ( preferFisher )
+                        textSpans.add(
+                            new StringUtil.TextSpan( start, end,
+                                             new StyleSpan( Typeface.BOLD ) ) );
+                }
             }
         }
         else
@@ -198,20 +222,28 @@ class ContingencyActivity
             Stats.ContingencyTableResult contingencyRslt
                     = Stats.chiSquareContingencyTableTest( table, false );
 
-            reportPW.printf( TestOfIndependence_ + ":\n"
-                             + "  χ²=%.3f (" + dof_ + "=%d)" + lend1
-                             + " " + Probability_ 
-                             + " (" + twoTailed_ + ") = ",
+            if ( contingencyRslt.chiSquareResult.degreesOfFreedom < 1 )
+            {
+                reportPW.printf( TooFewRowsColsError_ );
+            }
+            else
+            {
+                reportPW.printf( TestOfIndependence_ + ":\n"
+                                 + "  χ²=%.3f (" + dof_ + "=%d)" + lend1
+                                 + " " + Probability_ 
+                                 + " (" + twoTailed_ + ") = ",
                              contingencyRslt.chiSquareResult.chiSquare,
                              contingencyRslt.chiSquareResult.degreesOfFreedom );
-            int start = reportSW.toString().length();
+                int start = reportSW.toString().length();
 
-            reportPW.printf(  "%.3f",
-                             contingencyRslt.chiSquareResult.probability );
+                reportPW.printf(  "%.3f",
+                                  contingencyRslt.chiSquareResult.probability );
 
-            int end = reportSW.toString().length();
-            textSpans.add( new StringUtil.TextSpan( start, end,
-                                         new StyleSpan( Typeface.BOLD ) ) );
+                int end = reportSW.toString().length();
+                textSpans.add(
+                    new StringUtil.TextSpan( start, end,
+                                             new StyleSpan( Typeface.BOLD ) ) );
+            }
         }
         
         return StringUtil.makeSpannableString( reportSW.toString(), textSpans );
