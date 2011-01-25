@@ -145,8 +145,13 @@ class StatsActivity
         super.onCreateOptionsMenu( menu );
         getMenuInflater().inflate( R.menu.options, menu );
 
+        String appName = getResources().getString( R.string.app_name );
+        
         Intent intent = new Intent( getApplicationContext(),
                                     TextActivity.class );
+        intent.putExtra( "us.EpsilonDelta.SimpleStats.TITLE",
+                         appName + ": "
+                         + getResources().getString( R.string.Help ) );
         intent.putExtra( "us.EpsilonDelta.SimpleStats.LAYOUT_ID",
                          R.layout.plain_text );
         intent.putExtra( "us.EpsilonDelta.SimpleStats.TEXT_ID",
@@ -154,6 +159,9 @@ class StatsActivity
         menu.findItem( R.id.help_menu_item ).setIntent( intent );
 
         intent = new Intent( getApplicationContext(), TextActivity.class );
+        intent.putExtra( "us.EpsilonDelta.SimpleStats.TITLE",
+                       appName + ": "
+                       + getResources().getString( R.string.AboutHypotheses ) );
         intent.putExtra( "us.EpsilonDelta.SimpleStats.LAYOUT_ID",
                          R.layout.plain_text );
         intent.putExtra( "us.EpsilonDelta.SimpleStats.TEXT_ID",
@@ -161,6 +169,9 @@ class StatsActivity
         menu.findItem( R.id.hypotheses_menu_item ).setIntent( intent );
 
         intent = new Intent( getApplicationContext(), TextActivity.class );
+        intent.putExtra( "us.EpsilonDelta.SimpleStats.TITLE",
+                         getResources().getString( R.string.About )
+                         + " " + appName );
         intent.putExtra( "us.EpsilonDelta.SimpleStats.LAYOUT_ID",
                          R.layout.about );
         intent.putExtra( "us.EpsilonDelta.SimpleStats.TEXT_ID",
@@ -209,6 +220,9 @@ class StatsActivity
             CharSequence analysisText = getAnalysisText( );
             Intent intent = new Intent( getApplicationContext(),
                                         TextActivity.class );
+            intent.putExtra( "us.EpsilonDelta.SimpleStats.TITLE",
+                          getResources().getString( R.string.app_name ) + ": "
+                          + getResources().getString( R.string.DataAnalysis ) );
             intent.putExtra( "us.EpsilonDelta.SimpleStats.LAYOUT_ID",
                              R.layout.plain_text );
             intent.putExtra( "us.EpsilonDelta.SimpleStats.TEXT", analysisText );
