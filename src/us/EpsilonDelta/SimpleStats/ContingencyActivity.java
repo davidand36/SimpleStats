@@ -144,6 +144,8 @@ class ContingencyActivity
             Stats.ContingencyTableResult contingencyRslt
                     = Stats.chiSquareContingencyTableTest( table, false );
 
+            printTotals( reportPW, contingencyRslt );
+            
             if ( contingencyRslt.chiSquareResult.degreesOfFreedom < 1 )
             {
                 reportPW.printf( TooFewRowsColsError_ );
@@ -222,6 +224,8 @@ class ContingencyActivity
             Stats.ContingencyTableResult contingencyRslt
                     = Stats.chiSquareContingencyTableTest( table, false );
 
+            printTotals( reportPW, contingencyRslt );
+            
             if ( contingencyRslt.chiSquareResult.degreesOfFreedom < 1 )
             {
                 reportPW.printf( TooFewRowsColsError_ );
@@ -247,6 +251,40 @@ class ContingencyActivity
         }
         
         return StringUtil.makeSpannableString( reportSW.toString(), textSpans );
+    }
+
+//-----------------------------------------------------------------------------
+
+    private
+    void
+    printTotals( PrintWriter reportPW,
+                 Stats.ContingencyTableResult contingencyRslt )
+    {
+        String SampleSize_ = getResources().getString(
+            R.string.contingency_sampleSize );
+        String RowTotals_ = getResources().getString(
+            R.string.contingency_rowTotals );
+        String ColumnTotals_ = getResources().getString(
+            R.string.contingency_columnTotals );
+
+        reportPW.printf( SampleSize_ + "=%d\n",
+                         contingencyRslt.sampleTotal );
+        reportPW.printf( RowTotals_ + ": " );
+        for ( int i = 0; i < contingencyRslt.rowTotals.length; ++i )
+        {
+            if ( i > 0 )
+                reportPW.printf( ", " );
+            reportPW.printf( "%d", contingencyRslt.rowTotals[ i ] );
+        }
+        reportPW.printf( "\n" );
+        reportPW.printf( ColumnTotals_ + ": " );
+        for ( int i = 0; i < contingencyRslt.columnTotals.length; ++i )
+        {
+            if ( i > 0 )
+                reportPW.printf( ", " );
+            reportPW.printf( "%d", contingencyRslt.columnTotals[ i ] );
+        }
+        reportPW.printf( "\n\n" );
     }
     
 //=============================================================================

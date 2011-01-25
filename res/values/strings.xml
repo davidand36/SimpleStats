@@ -61,6 +61,9 @@
   <string name="contingency_x">" x "</string>
   <string name="contingency_rowsXcols">" (rows x columns)"</string>
   <string name="contingency_sampleDataPrompt">Sample data:</string>
+  <string name="contingency_sampleSize">Sample size</string>
+  <string name="contingency_rowTotals">Row totals</string>
+  <string name="contingency_columnTotals">Column totals</string>
   <string name="contingency_tooFewRowsColsError">At least 2 non-zero rows and columns are required.</string>
   <string name="contingency_wrongNumberOfEntriesError">"The wrong number of counts were entered: "</string>
   <string name="contingency_negativeCountError">Frequency counts cannot be negative.</string>
