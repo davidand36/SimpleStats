@@ -9,15 +9,15 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="27"
-   height="27"
+   width="64"
+   height="64"
    id="svg2892"
    version="1.1"
    inkscape:version="0.48.0 r9654"
    sodipodi:docname="icon_sigma.svg"
-   inkscape:export-filename="/home/dma/Projects/Android/SimpleStats/res/drawable-ldpi/icon_sigma.png"
-   inkscape:export-xdpi="50.619999"
-   inkscape:export-ydpi="50.619999">
+   inkscape:export-filename="/home/dma/Projects/Android/SimpleStats/Docs/icon_sigma.png"
+   inkscape:export-xdpi="720"
+   inkscape:export-ydpi="720">
   <defs
      id="defs2894">
     <inkscape:perspective
@@ -59,7 +59,7 @@
      inkscape:window-width="1100"
      inkscape:window-height="757"
      inkscape:window-x="533"
-     inkscape:window-y="1"
+     inkscape:window-y="2"
      inkscape:window-maximized="0"
      units="in" />
   <metadata
@@ -77,34 +77,36 @@
   <g
      id="layer1"
      inkscape:label="Background"
-     inkscape:groupmode="layer"
-     transform="translate(0,-37)"
-     sodipodi:insensitive="true">
-    <rect
-       style="fill:#76b3df;fill-opacity:1"
-       id="rect3619"
-       width="64"
-       height="64"
-       x="0"
-       y="0"
-       ry="8" />
+     inkscape:groupmode="layer">
+    <g
+       id="g2997" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="Text"
-     transform="translate(0,-37)"
-     sodipodi:insensitive="true">
-    <text
-       xml:space="preserve"
-       style="font-size:72px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ffff00;fill-opacity:1;stroke:none;font-family:FreeSerif;-inkscape-font-specification:FreeSerif"
-       x="11.073924"
-       y="55.775883"
-       id="text4136"
-       sodipodi:linespacing="100%"><tspan
-         sodipodi:role="line"
-         id="tspan2828"
+     inkscape:label="Text">
+    <g
+       id="g3001"
+       transform="matrix(0.78125,0,0,0.78125,7,7)">
+      <rect
+         style="fill:#76b3df;fill-opacity:1"
+         id="rect3619"
+         width="64"
+         height="64"
+         x="0"
+         y="0"
+         ry="8" />
+      <text
+         sodipodi:linespacing="100%"
+         id="text4136"
+         y="55.775883"
          x="11.073924"
-         y="55.775883">Σ</tspan></text>
+         style="font-size:72px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#ffff00;fill-opacity:1;stroke:none;font-family:FreeSerif;-inkscape-font-specification:FreeSerif"
+         xml:space="preserve"><tspan
+           y="55.775883"
+           x="11.073924"
+           id="tspan2828"
+           sodipodi:role="line">Σ</tspan></text>
+    </g>
   </g>
 </svg>

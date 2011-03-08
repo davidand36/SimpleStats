@@ -1,5 +1,5 @@
 /*
-  SimpleStats.java
+  SimpleStatsActivity.java
   Copyright © 2010 David M. Anderson
 
   Main activity for SimpleStats Android app.

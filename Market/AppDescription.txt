@@ -1,0 +1,9 @@
+Common statistical tests made easy:
+• Mean: compare the average value of a random variable against a hypothetical value.
+• Means: compare the means of two samples.
+• Correlation: test whether two continuous variables are independent and estimate a linear regression line.
+• Contingency table: test whether two categorical (discrete) variables are independent.
+
+Data entry is free-form, allowing you to cut and paste from spreadsheets, Web pages, etc., or type in the data with little fuss. You can also specify which tail or tails to test, based on your hypothesis.
+
+Open source: GPL v 3.
