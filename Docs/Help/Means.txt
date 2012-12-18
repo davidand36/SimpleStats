@@ -1,0 +1,10 @@
+﻿The Means test analyzes random samples of real numbers from two populations with approximately normal distributions.
+
+Enter the sample data however you want. The numbers can be separated by pretty much anything: newlines, spaces, punctuation, or even text. Then select the hypothesized relation and click Analyze.
+
+Statistics computed for each sample are: minimum and maximum (useful for checking for data-entry errors), median (50th percentile), mean (average), and standard deviation (the square root of the unbiased variance estimate).
+
+The t test tests an hypothesis about the means of the two populations, µ₁ and µ₂, namely whether the first is less than (or greater than or simply not equal to) the second.
+
+Actually, two t tests are performed. For the first the null hypothesis is that the two distributions not only have the same mean, but also the same variance. The second tests the means without making that assumption. An F test is presented which tests the assumption that the variances are equal.
+

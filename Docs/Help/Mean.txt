@@ -1,0 +1,8 @@
+﻿The Mean test analyzes a random sample of real numbers from a population with an approximately normal distribution.
+
+Enter the sample data however you want. The numbers can be separated by pretty much anything: newlines, spaces, punctuation, or even text. Then select the hypothesized relation and value, and click Analyze.
+
+Sample statistics computed are: minimum and maximum (useful for checking for data-entry errors), median (50th percentile), mean (average), and standard deviation (the square root of the unbiased variance estimate).
+
+The t test tests an hypothesis about the population mean, µ, namely whether it is less than (or greater than or simply not equal to) a specified value.
+

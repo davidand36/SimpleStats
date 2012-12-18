@@ -1,0 +1,10 @@
+﻿The Correlation test analyzes a random sample of pairs of real numbers representing two variables (which are referred to as X and Y) from a population with an approximately bivariate normal distribution.
+
+Enter the sample data however you want. The numbers can be separated by pretty much anything: newlines, spaces, punctuation, or even text. Then select the hypothesized relation and click Analyze.
+
+Sample statistics computed are: mean (average), and standard deviation (the square root of the unbiased variance estimate) for each variable, and Pearson's correlation coefficient (r), a measure of the linear dependence of the variables.
+
+The t test tests an hypothesis about the correlation, ρ, namely whether it is less than (or greater than or simply not equal to) zero.
+
+The linear regression estimates the coefficients of the equation Y = α + ßX + ε (where ε is a residual “error” term with a mean of zero) that best fit the data. Both the mean and standard deviation of the estimated coefficients are given as well as the standard deviation of the residual.
+

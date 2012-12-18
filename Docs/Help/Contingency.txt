@@ -1,0 +1,8 @@
+﻿The Contingency Table test analyzes the relation between two categorical variables. Each variable has a small number of possible values and the table contains the counts, i.e. the observed frequency of each combination of values of the variables.
+
+Enter the number of rows and columns and the table sample data. The numbers can be separated by pretty much anything: newlines, spaces, punctuation, or even text. Then click Analyze.
+
+The χ² (Chi-square) test tests the hypothesis that the two variables are independent.
+
+For a 2x2 table the test is one-tailed (because the “direction” of the relation can be inferred from the data). (The probability for a two-tailed test would be twice that reported.) In addition a Fisher's “exact” test is presented. (If the sample size is large an equivalent  χ² test with Yate's correction is used.) This test is most appropriate when the margins (row and column totals) are considered fixed, but may be too conservative otherwise.
+
